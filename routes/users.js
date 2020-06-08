@@ -1,3 +1,4 @@
+const middleware = require('../middleware/middleware.js');
 const router = require('express').Router();
 
 const User = require('../models/User.js');
@@ -13,8 +14,8 @@ router.get('/setsessionvalue', (req, res) => {
     return res.send({ });
 });
 
-router.get('/getsessionvalue', (req, res) => {
-    return res.send({ response: req.session.myValue });
+router.get('/getsessionvalue', middleware.loggedin, (req, res) => {
+    return res.send({ response: req.session.loggedin });
 });
 
 module.exports = router;
