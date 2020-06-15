@@ -20,7 +20,31 @@ socket.on('locations', function (locationsData) {
             onOffStatusIconElem.removeClass('offline').addClass('online').html(`Online <i class="fas fa-globe online"></i>`);
         }
     }else{
-        console.log(gmap);
+
+        // get existing path
+        var path = gmap.routePath.getPath().getArray();
+
+/*         for(let [key, value] of allRouteCordinates){
+            path.push(new google.maps.LatLng(value.lat, value.lng));
+            console.log(value);
+        } */
+        
+        console.log(path);
+
+        Object.keys(allRouteCordinates).forEach( (key) => {
+            let route = allRouteCordinates[key];
+            path.push(new google.maps.LatLng(route.lat, route.lng));
+//            path.push(new google.maps.LatLng(value.lat, value.lng));
+            console.log(route.lat); 
+        });
+
+
+        console.log(path);
+
+        // update the polyline with the updated path
+        gmap.routePath.setPath(path);
+
+        gmap.routePath.setMap(gmap.map);
     }
 });
 
