@@ -93,3 +93,22 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+
+.on-off-status-icon span{
+    font-size: 1.4em !important;
+    color: red;
+}
+
+.on-off-status-icon{
+    position: absolute;
+    right: 20px;
+    top: 12px;
+}
+
+.on-off-status-icon .online{
+    color: green;
+}
+
+.white-text{
+    color: #FFFFFF;
+}

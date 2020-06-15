@@ -5,7 +5,11 @@
             <h3>Glad to see you.</h3>
             <p class="ft-white">Now i would like to hear from you so please try and send me an email using the following form (I'll send you a copy):</p>
 
-            <a href="/logout">If you don't feel like being here anymore you can click here to logout.</a>
+            <p class="ft-white">
+                You can also <a href="/gps/track/" class="btn btn-light">Click this button</a> to navigate to my personal transmission that i broadcast whenever i go kayaking.
+            </p>
+
+            <a href="/logout">Don't feel like being here anymore? Click here to logout.</a>
         </div>
         <div class="card-body">
             <form id="sendMailForm" action="/sendemail" method="POST">
@@ -21,7 +25,7 @@
 
                 <div class="form-group">
                     <label for="message" class="ft-white">Message:</label>
-                    <textarea class="form-control" name="message" id="message" cols="15" rows="10"></textarea>
+                    <textarea class="form-control" name="message" id="message" cols="15" rows="5"></textarea>
                 </div>
 
                 <div class="form-group">

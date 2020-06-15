@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+// Make socket.io available
+app.locals.io = io
+
 const bodyParser = require("body-parser");
 
 //Here we are configuring express to use body-parser as middle-ware.
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Allow access to public ressourcesƒ
@@ -54,19 +59,30 @@ const authRoute = require('./routes/auth.js');
 const usersRoute = require('./routes/users.js');
 const userRoute = require('./routes/user.js');
 const emailRoute = require('./routes/email.js');
-
+const gpsRoute = require('./routes/gps.js');
 
 app.use(authRoute);
 app.use(usersRoute);
 app.use(userRoute);
 app.use(emailRoute);
+app.use(gpsRoute);
+
+/* Socket.io */
+io.on('connection', (socket) => {
+    console.log('A user connected');
+
+    socket.on('disconnect', (data) => {
+        console.log('A user disconnected');
+    });
+});
 
 /* Start server */
 const PORT = 3000;
 
-app.listen(PORT, (error) => {
+server.listen(PORT, (error) => {
     if (error) {
         console.log(error);
     }
     console.log("Server is running on port", PORT);
 })
+

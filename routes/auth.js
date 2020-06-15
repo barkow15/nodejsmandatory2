@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
         return res.status(400).send({ response: "No user found with the supplied username. Please try again." });
     }
 
-    // 3. bcrypt compare
+    // 3. bcrypt compare && sessions
     const passwordFoundVal = userFound[0].password; 
 
     bcrypt.compare(password, passwordFoundVal).then((result) => {
@@ -58,7 +58,6 @@ router.post("/login", async (req, res) => {
             return res.status(400).send({ response: "Password does not match the entered username. Please try again with a different password." });
         }
     });    
-    // 4. sessions
 
 });
 

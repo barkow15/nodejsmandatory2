@@ -23,16 +23,16 @@ $(document).ready(function (){
                 Swal.fire({
                     icon: 'success',
                     title: 'Good to see you again!',
-                    html: 'You will be redirected in <span class="redirectcountdown">1</span> seconds'
+                    html: 'You will be redirected in <span class="redirectcountdown">5</span> seconds'
                 });
                 //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
                 // do what ever you want with the server response
                 let redirectCountdownElem = $('.redirectcountdown');
-                var counter = 1;
+                var counter = 5;
                 var interval = setInterval(function() { // Set timer
-                    counter++;
+                    counter--;
                     redirectCountdownElem.text(counter);
-                    if (counter == 5) {
+                    if (counter == 0) {
                         clearInterval(interval);
                         redirectCountdownElem.parent().html('redirecting...');
                         window.location.replace(`${res.redirectURL}`);

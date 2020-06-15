@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center h-100">
+    <div class="card">
+
+        <div class="card-header">
+            <h3>Live-tracking</h3>
+            <div class="d-flex justify-content-end social_icon on-off-status-icon">
+                <span class="offline">Offline <i class="fas fa-power-off"></i> </span>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <p class="white-text">
+                The idea os this page is to follow my endavours in my inflatable kayak live. My phone will be emitting the coordinates to this webapp as long as i am on the water (and remember to turn on my phone).
+            </p>
+            <div id="map" style="height:400px;"></div>
+        </div>
+
+        <div class="card-footer">
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Socket.io -->
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="track.js"></script>
+
+<!-- Google maps -->
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSI2IIg9dzmZq5EzrnQSm23pIREvepPE4">
+</script>
+
